@@ -25,6 +25,8 @@ let imgLegs;
 let imgArms;
 let imgTitle;
 
+// let name = prompt("who are you?")
+
 //Stating Variables
 
 
@@ -56,6 +58,6 @@ function draw(){
   
   //Question Functions
 function questionOne(){
-  text("Click on the femur bone", 100, 150, 150);
+  text("Click on the femur bone", 130, 150, 150);
 }
 }

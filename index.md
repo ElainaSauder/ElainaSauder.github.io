@@ -1,6 +1,6 @@
 # My Comp Sci 30 Stuff
 ## Demos
-- [Traffic Light](http://wmcicompsci.ca)
+- [Traffic Light](Traffic Light)
 
 
 ## Projects

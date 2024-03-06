@@ -23,6 +23,9 @@ let imgBack;
 //Stating Variables
 let clicked = "not";
 let question = 1;
+let rect1;
+let rect2;
+let rect3;
 let rect1X;
 let rect1Y;
 let rect1Width;
@@ -72,6 +75,10 @@ function draw(){
 //Functions
 function questionOne(){
   text("Click on the corrisponding box to the femur bone", 130, 150, 150);
+}
+
+function questionTwo(){
+  text("")
 }
 
 function isInRect1(x, y, top, bottom, left, right){

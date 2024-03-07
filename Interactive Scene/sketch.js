@@ -8,8 +8,9 @@
 // the plan is to create a guessing game that helps you learn the bones in the body, by letting you . slash having you click on the correct bone.
 
 // i need a mouse interaction element
-// have the keyboard do something
-// use state variables
+// have the keyboard do something- for this i was thinking that you enter your
+//player name and then add that to the congradulations thing.
+// use state variables - question??
 // take in user input
 
 // let name = prompt("who are you?")
@@ -25,8 +26,8 @@ let question = 1; // My state variable
 let rect1;
 let rect2;
 let rect3;
-let x1 ;
-let y1;
+let x1 = 330;
+let y1 = 95;
 let x2;
 let y2;
 let x3;
@@ -52,9 +53,9 @@ function draw(){
 
   //click boxes
   rect1 = rect(x1, y1, squareLength, squareLength); //change these from magic numbers to the lower mentioned variables
-  rect2 = rect(x2, y2, 20, 20);
-  rect3 = rect(200, 350, 20, 20);
-  rect(300, 200, 20, 20);
+  rect2 = rect(x2, y2, squareLength, squareLength);
+  rect3 = rect(x3, y3, squareLength, squareLength);
+  rect(300, 200, squareLength, squareLength);
 
   //Displaying Questions
   if(question === 1){
@@ -91,7 +92,7 @@ function questionThree(){
 }
 
 function isInRect1(x1, y1, top1, bottom1, left1, right1){
-  return x1 >= left1 && x1 <= right1 && y1 >= top1 && y1 <= bottom1; // make vairables
+  return x1 >= left1 && x1 <= right1 && y1 >= top1 && y1 <= bottom1; // make vairables and connect to rects
 }
 
 function isInRect2(x, y, top, bottom, left, right){
@@ -116,6 +117,8 @@ function mouseClicked(){
     clicked = "not";
   }
 }
+
+
 
 function displayCorrect(){
   if(clicked === "is"){

@@ -62,7 +62,12 @@ function draw(){
   question = 1;
   if(question === 1){
     questionOne();
-    displayCorrect();
+    if (mouseClicked()){
+      displayCorrect();
+    }
+    else{
+      questionOne();
+    }
   }
   else if(question === 2){
     questionTwo();
@@ -73,7 +78,7 @@ function draw(){
     displayCorrect();
   }
   else{
-    text("Congratulations ", playerName, " you finished!", 0, 0); //Extra for experts
+    text("Congratulations ", playerName, " you finished!", 130, 350); //Extra for experts
   }
 }
 
@@ -94,16 +99,36 @@ function questionThree(){
 }
 
 function isInRect1(){
-  hit = collidePointRect(mouseX, mouseY, 200, 200, 100, 150);
-
+  hit = collidePointRect(mouseX, mouseY, x1, y1, squareLength, squareLength);
+  console.log(hit);
+  if(hit === true){
+    isInRect1 = true;
+  }
+  else{
+    isInRect1 = false;
+  }
 }
 
-function isInRect2(x, y, top, bottom, left, right){
-  return x >= left && x <= right && y >= top && y <= bottom;
+function isInRect2(){
+  hit = collidePointRect(mouseX, mouseY, x2, y2, squareLength, squareLength);
+  console.log(hit);
+  if(hit === true){
+    isInRect2 = true;
+  }
+  else{
+    isInRect2 = false;
+  }
 }
 
-function isInRect3(x, y, top, bottom, left, right){
-  return x >= left && x <= right && y >= top && y <= bottom;
+function isInRect3(){
+  hit = collidePointRect(mouseX, mouseY, x3, y3, squareLength, squareLength);
+  console.log(hit);
+  if(hit === true){
+    isInRect3 = true;
+  }
+  else{
+    isInRect3 = false;
+  }
 }
 
 function mouseClicked(){
@@ -127,7 +152,7 @@ function displayCorrect(){
     question = question + 1;
   }
   else{
-    text("Incorrect", 330, 150, 150);
+    text("Incorrect", 230, 200, 150);
     question = question + 1;
   }
 }

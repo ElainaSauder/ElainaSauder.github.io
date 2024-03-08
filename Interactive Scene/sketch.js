@@ -14,6 +14,7 @@ let imgBack;
 let clicked = "not"; 
 let question = 1; // My state variable
 let playerName;
+let hit = false;
 
 let rect1;
 let rect2;
@@ -92,9 +93,9 @@ function questionThree(){
   text("Click on the corresponding box to the metacarpals?", 130, 150, 150);
 }
 
-function isInRect1(x1, y1, top, bottom, left, right){
-  
-  // return x1 >= left && x1 <= right && y1 >= top && y1 <= bottom; // make vairables and connect to rects
+function isInRect1(){
+  hit = collidePointRect(mouseX, mouseY, 200, 200, 100, 150);
+
 }
 
 function isInRect2(x, y, top, bottom, left, right){

@@ -5,14 +5,6 @@
 // Extra for Experts:
 // - Taking in User Input to answer the questions I ask
 
-// the plan is to create a guessing game that helps you learn the bones in the body, by letting you . slash having you click on the correct bone.
-
-// i need a mouse interaction element
-// have the keyboard do something- for this i was thinking that you enter your
-//player name and then add that to the congradulations thing.
-// use state variables - question??
-// take in user input
-
 //Stating Image Variables
 let imgSkeleton;
 let imgTitle;
@@ -65,7 +57,7 @@ function draw(){
   rect(360, 350, squareLength, squareLength);
   rect(340, 220, squareLength, squareLength);
 
-  //Displaying Questions
+  //Displaying Questions and Correction
   question = 1;
   if(question === 1){
     questionOne();

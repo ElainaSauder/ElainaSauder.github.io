@@ -42,6 +42,7 @@ function preload(){
 function setup() {
   createCanvas(664, 500);
   playerName = prompt("Welcome! What is your name?"); //extra for experts
+  question = 1;
 }
 
 function draw(){
@@ -61,23 +62,27 @@ function draw(){
   //Displaying Questions and Correction
   if(question === 1){
     questionOne();
-    if (mouseClicked()){
+    if(clicked === "is"){
       displayCorrect();
-    }
-    else{
-      questionOne();
+      question = 2;
     }
   }
   else if(question === 2){
     questionTwo();
-    displayCorrect();
+    if(clicked === "is"){
+      displayCorrect();
+      question = 3;
+    }
   }
   else if(question === 3){
     questionThree();
-    displayCorrect();
+    if(clicked === "is"){
+      displayCorrect();
+      
+    }
   }
   else{
-    text("Congratulations ", playerName, " you finished!", 130, 350); //Extra for experts
+    text("Congratulations " + playerName + " you finished!", 130, 350); //Extra for experts
   }
 }
 
@@ -99,7 +104,7 @@ function questionThree(){
 
 function isInRect1(){
   hit = collidePointRect(mouseX, mouseY, x1, y1, squareLength, squareLength);
-  console.log(hit);
+  // console.log(hit);
   if(hit === true){
     return true;
   }
@@ -110,7 +115,6 @@ function isInRect1(){
 
 function isInRect2(){
   hit = collidePointRect(mouseX, mouseY, x2, y2, squareLength, squareLength);
-  console.log(hit);
   if(hit === true){
     return true;
   }
@@ -121,7 +125,7 @@ function isInRect2(){
 
 function isInRect3(){
   hit = collidePointRect(mouseX, mouseY, x3, y3, squareLength, squareLength);
-  console.log(hit);
+  // console.log(hit);
   if(hit === true){
     return true;
   }
@@ -130,8 +134,11 @@ function isInRect3(){
   }
 }
 
-function mouseClicked(){
+function mousePressed(){
+  console.log(question);
+  console.log(clicked);
   if (isInRect1() === true && question === 1){
+    console.log(clicked);
     clicked = "is";
   }
   else if(isInRect2() === true && question === 2){
@@ -148,13 +155,10 @@ function mouseClicked(){
 function displayCorrect(){
   if(clicked === "is"){
     text("Correct!", 330, 150, 150);
-    question = question + 1;
+    // question = question + 1;
   }
   else{
     text("Incorrect", 230, 200, 150);
-    question = question + 1;
+    // question = question + 1;
   }
-function collidePointRect(mouseXVal, mouseYVal, squareX, squareY, squareLengthVal){
-  return mouseXVal > squareX && mouseXVal < squareX + squareLengthVal && mouseYVal > squareY && mouseYVal < squareY + squareLengthVal;
-}
 }

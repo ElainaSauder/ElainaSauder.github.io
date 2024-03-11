@@ -59,7 +59,6 @@ function draw(){
   rect(340, 220, squareLength, squareLength);
 
   //Displaying Questions and Correction
-  question = 1;
   if(question === 1){
     questionOne();
     if (mouseClicked()){
@@ -102,10 +101,10 @@ function isInRect1(){
   hit = collidePointRect(mouseX, mouseY, x1, y1, squareLength, squareLength);
   console.log(hit);
   if(hit === true){
-    isInRect1 = true;
+    return true;
   }
   else{
-    isInRect1 = false;
+    return false;
   }
 }
 
@@ -113,10 +112,10 @@ function isInRect2(){
   hit = collidePointRect(mouseX, mouseY, x2, y2, squareLength, squareLength);
   console.log(hit);
   if(hit === true){
-    isInRect2 = true;
+    return true;
   }
   else{
-    isInRect2 = false;
+    return false;
   }
 }
 
@@ -124,10 +123,10 @@ function isInRect3(){
   hit = collidePointRect(mouseX, mouseY, x3, y3, squareLength, squareLength);
   console.log(hit);
   if(hit === true){
-    isInRect3 = true;
+    return true;
   }
   else{
-    isInRect3 = false;
+    return false;
   }
 }
 
@@ -155,4 +154,7 @@ function displayCorrect(){
     text("Incorrect", 230, 200, 150);
     question = question + 1;
   }
+function collidePointRect(mouseXVal, mouseYVal, squareX, squareY, squareLengthVal){
+  return mouseXVal > squareX && mouseXVal < squareX + squareLengthVal && mouseYVal > squareY && mouseYVal < squareY + squareLengthVal;
+}
 }

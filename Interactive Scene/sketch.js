@@ -5,6 +5,12 @@
 // Extra for Experts:
 // - Taking in User Input to give a persionalized congradrulations message
 
+// there are still some issues that I cannot figure out but it is alot better
+// than it was. I have to go to work and can no longer work on this, sorry that
+// this is not my best work. I hope you get the jisk of it. let me know if you 
+// have any question. I look forward to getting your feed back and learning what
+// i can do to fix the code.
+
 //Stating Image Variables
 let imgSkeleton;
 let imgTitle;
@@ -57,37 +63,24 @@ function draw(){
   rect(360, 350, squareLength, squareLength);
   rect(340, 220, squareLength, squareLength);
 
+ // all the issues are in this section I think.
   //Displaying Questions and Correction
   if(question === 1){
     questionOne();
-    if(clicked === "is"){
-      displayCorrect1();
-      // if (displayCorrect1() === true){ //I not sure why what im doing is working but it is so Im just going to leave it rather than fiddle with it more.
-        // clicked = "not";
-        question = 2;
-      
-    }
+    displayCorrect1();
+      //I not sure why what im doing is working but it is so Im just going to leave it rather than fiddle with it more.
+    question = 2;
   }
   else if(question === 2){
     questionTwo();
-    if(clicked === "is"){
-      displayCorrect2();
-      // if(displayCorrect2() === true){
-        // clicked = "not";
-        question = 2;
-      
-    }
+    displayCorrect2();
+    question = 3;
   }
   else if(question === 3){
-    setTimeout(questionThree(), 2000);
-    if(clicked === "is"){
-      displayCorrect3();
-      // if(displayCorrect3() === true){
+    questionThree();
+    displayCorrect3();
       // clicked = "not";
-      text("Congratulations " + playerName + " you finished!", 130, 250); //Extra for experts used suer input and concatonated it
-
-      
-    }
+    text("Congratulations " + playerName + " you finished!", 130, 250); //Extra for experts used suer input and concatonated it
   }
 }
 
@@ -130,7 +123,6 @@ function isInRect2(){
 
 function isInRect3(){
   hit = collidePointRect(mouseX, mouseY, x3, y3, squareLength, squareLength);
-  // console.log(hit);
   if(hit === true){
     return true;
   }
@@ -140,10 +132,9 @@ function isInRect3(){
 }
 
 function mousePressed(){
-  console.log(question);
+  console.log(question); // just for my checks
   console.log(clicked);
   if (isInRect1() === true && question === 1){
-    console.log(clicked);
     clicked = "is";
   }
   else if(isInRect2() === true && question === 2){
@@ -168,7 +159,7 @@ function displayCorrect2(){
   if(clicked === "is"){
     text("Correct!", 130, 200, 150);
     return true;
-    // question = question + 1;
+    // question = question + 1; // not sure why this doesnt work here but kinda works up top
   }
 }
 function displayCorrect3(){
@@ -177,8 +168,3 @@ function displayCorrect3(){
     // question = question + 1;
   }
 }
-
-// else{
-//   text("Incorrect", 130, 200, 150);
-//   // question = question + 1;
-// }

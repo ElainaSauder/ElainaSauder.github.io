@@ -3,7 +3,7 @@
 // March 11th, 2024
 //
 // Extra for Experts:
-// - Taking in User Input to answer the questions I ask
+// - Taking in User Input to give a persionalized congradrulations message
 
 //Stating Image Variables
 let imgSkeleton;
@@ -16,14 +16,12 @@ let question = 1; // My state variable
 let playerName;
 let hit = false;
 
+//Click square variables
 let rect1;
 let rect2;
 let rect3;
 
-let bottom;
-let right;
-let left;
-
+//Variables for the collide function
 let x1 = 320;
 let y1 = 290;
 let x2 = 340;
@@ -63,26 +61,32 @@ function draw(){
   if(question === 1){
     questionOne();
     if(clicked === "is"){
-      displayCorrect();
-      question = 2;
+      displayCorrect1();
+      if (displayCorrect1() === true){
+        clicked = "not";
+        question = 2;
+      }
     }
   }
   else if(question === 2){
     questionTwo();
     if(clicked === "is"){
-      displayCorrect();
-      question = 3;
+      displayCorrect2();
+      if(displayCorrect2() === true){
+        clicked = "not";
+        question = 3;
+      }
     }
   }
   else if(question === 3){
     questionThree();
     if(clicked === "is"){
-      displayCorrect();
+      displayCorrect3();
       
     }
   }
   else{
-    text("Congratulations " + playerName + " you finished!", 130, 350); //Extra for experts
+    text("Congratulations " + playerName + " you finished!", 130, 250); //Extra for experts
   }
 }
 
@@ -152,13 +156,36 @@ function mousePressed(){
   }
 }
 
-function displayCorrect(){
+function displayCorrect1(){
   if(clicked === "is"){
-    text("Correct!", 330, 150, 150);
+    text("Correct!", 130, 200, 150);
+    return true;
     // question = question + 1;
   }
   else{
-    text("Incorrect", 230, 200, 150);
+    text("Incorrect", 130, 200, 150);
+    // question = question + 1;
+  }
+}
+function displayCorrect2(){
+  if(clicked === "is"){
+    text("Correct!", 130, 200, 150);
+    return true;
+    // question = question + 1;
+  }
+  else{
+    text("Incorrect", 130, 200, 150);
+    return true;
+    // question = question + 1;
+  }
+}
+function displayCorrect3(){
+  if(clicked === "is"){
+    text("Correct!", 130, 200, 150);
+    // question = question + 1;
+  }
+  else{
+    text("Incorrect", 130, 200, 150);
     // question = question + 1;
   }
 }

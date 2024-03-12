@@ -65,6 +65,7 @@ function draw(){
 
  // all the issues are in this section I think.
   //Displaying Questions and Correction
+  question = 1;
   if(question === 1){
     questionOne();
     displayCorrect1();

@@ -62,31 +62,32 @@ function draw(){
     questionOne();
     if(clicked === "is"){
       displayCorrect1();
-      if (displayCorrect1() === true){
-        clicked = "not";
+      // if (displayCorrect1() === true){ //I not sure why what im doing is working but it is so Im just going to leave it rather than fiddle with it more.
+        // clicked = "not";
         question = 2;
-      }
+      
     }
   }
   else if(question === 2){
     questionTwo();
     if(clicked === "is"){
       displayCorrect2();
-      if(displayCorrect2() === true){
-        clicked = "not";
-        question = 3;
-      }
-    }
-  }
-  else if(question === 3){
-    questionThree();
-    if(clicked === "is"){
-      displayCorrect3();
+      // if(displayCorrect2() === true){
+        // clicked = "not";
+        question = 2;
       
     }
   }
-  else{
-    text("Congratulations " + playerName + " you finished!", 130, 250); //Extra for experts
+  else if(question === 3){
+    setTimeout(questionThree(), 2000);
+    if(clicked === "is"){
+      displayCorrect3();
+      // if(displayCorrect3() === true){
+      // clicked = "not";
+      text("Congratulations " + playerName + " you finished!", 130, 250); //Extra for experts used suer input and concatonated it
+
+      
+    }
   }
 }
 
@@ -162,19 +163,10 @@ function displayCorrect1(){
     return true;
     // question = question + 1;
   }
-  else{
-    text("Incorrect", 130, 200, 150);
-    // question = question + 1;
-  }
 }
 function displayCorrect2(){
   if(clicked === "is"){
     text("Correct!", 130, 200, 150);
-    return true;
-    // question = question + 1;
-  }
-  else{
-    text("Incorrect", 130, 200, 150);
     return true;
     // question = question + 1;
   }
@@ -184,8 +176,9 @@ function displayCorrect3(){
     text("Correct!", 130, 200, 150);
     // question = question + 1;
   }
-  else{
-    text("Incorrect", 130, 200, 150);
-    // question = question + 1;
-  }
 }
+
+// else{
+//   text("Incorrect", 130, 200, 150);
+//   // question = question + 1;
+// }

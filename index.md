@@ -4,6 +4,7 @@
 - [Bouncing Ball](bouncingball)
 - [Collsion Demo](collision)
 - [Arrays and Objects](circles)
+- [Generative Art](art)
 
 ## Projects
 - [Interactice Scene](Interactive Scene)

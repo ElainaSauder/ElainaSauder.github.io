@@ -10,9 +10,9 @@
 // use arrays
 // use an aiming line
 
-//Variables
-let x;
-let y;
+//Net Variables
+let netX;
+let netY;
 let time = 0;
 
 function setup() {
@@ -22,8 +22,9 @@ function setup() {
 function draw() {
   background(220);
 
-  x = noise(time) * width;
-  y = noise(time + 50) * height;
-  circle(x, y, 50);
+  //getting the nets to move
+  netX = noise(time) * width;
+  netY = noise(time + 50) * height;
+  circle(netX, netY, 50); // change to net
   time += 0.01;
 }

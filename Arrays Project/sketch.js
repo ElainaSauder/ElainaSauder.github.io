@@ -14,6 +14,7 @@
 let netX;
 let netY;
 let time = 0;
+let deviance = 50;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,9 +23,17 @@ function setup() {
 function draw() {
   background(220);
 
+  generateNets();
+}
+
+function generateNets(){
   //getting the nets to move
   netX = noise(time) * width;
-  netY = noise(time + 50) * height;
+  netY = noise(time + deviance) * height;
   circle(netX, netY, 50); // change to net
-  time += 0.01;
+  time += 0.008;
+}
+
+function makeBalls(){
+  
 }

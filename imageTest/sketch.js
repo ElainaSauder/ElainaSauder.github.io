@@ -6,7 +6,6 @@ let ballArray = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  noStroke();
   spawnBall(width/2, height/2);
 }
 
@@ -25,27 +24,13 @@ function moveBalls() {
   for (let ball of ballArray) {
     ball.x += ball.dx;
     ball.y += ball.dy;
-
-    //teleport across screen
-    if(ball.x < 0){
-      ball.x = width;
-    }
-    else if(ball.x > width){
-      ball.x = 0;
-    }
-
-    if(ball.y < 0){
-      ball.y = height;
-    }
-    else if(ball.y > height){
-      ball.y = 0;
-    }
   }
 }
 
+
 function displayBalls() {
   for(let ball of ballArray){
-    fill(ball.color);
+    // fill(ball.color);
     circle(ball.x, ball.y, ball.radius * 2);
   }
 }
@@ -63,6 +48,12 @@ function spawnBall(){
 }
 
 function guideLine(){
-  stroke("black");
+  stroke("black");  
+  ellipse(width/2, height/2, 200, 200);
   line(width/2, height/2, mouseX, mouseY);
+
+  console.log(mouseX);
+
+  // if (mouseX = )
+  // atan2() or atan()
 }

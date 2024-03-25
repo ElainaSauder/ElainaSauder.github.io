@@ -8,7 +8,13 @@
 // use noise to move the nets in a random way
 // use object notations to make the ball and the nets
 // use arrays
-// use an aiming line
+// use an aiming line with a slider rather than using only mouse
+// make the targets disapear when you hit them
+// use collide
+// use a point counter
+// use state cariable to make a difficulty starter page
+// use a key on the keyboard to shoot the ball
+
 
 //Net Variables
 let netX;

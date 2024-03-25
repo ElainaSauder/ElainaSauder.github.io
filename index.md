@@ -8,6 +8,7 @@
 - [Generative Art](art)
 - [Terrain Generation](terrain)
 - [Translate and Rotate](translate)
+- [Bubble Object demo](bubble)
 
 ## Projects
 - [Interactice Scene](Interactive Scene)

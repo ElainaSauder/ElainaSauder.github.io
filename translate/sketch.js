@@ -9,7 +9,7 @@ function setup() {
 
 function draw() {
   background(220);
-  
+  degreeBar();
   makeAimer();
 }
 
@@ -25,8 +25,11 @@ function makeAimer(){
 }
 
 function degreeBar(){
-  fill("green")
-  rect(width/3, height - 20, 360, 10);
-  circle(mouseX, height - 20, 20);
-  Text()
+  fill("green");
+  rect(width/2, height - 20, 360, 10);
+  console.log (mouseX);
+  if(mouseX > 600|| mouseX < 965){
+    circle(mouseX, height - 20, 20);
+  }
+  // add instruntional text
 }

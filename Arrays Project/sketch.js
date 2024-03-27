@@ -13,45 +13,47 @@
 // use collide
 // use a point counter
 // use state cariable to make a difficulty starter page
-// use a key on the keyboard to shoot the ball
+// use a key on the keyboard to shoot the ball, the space bar
+// make instructions
 
 
-//Net Variables
-let netX;
-let netY;
-let time = 0;
-let deviance = 50;
-
+//Variables
 let theNets = [];
+let state = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
+  //Setting up for translate
   angleMode(DEGREES);
   rectMode(CENTER);
 
-  for(let i = 0; i < 5; i++){
+  //make the nets
+  for(let i = 0; i < 5; i++){ //change the 5 to make it more or less nets
     generateNets();
   }
 
-  // choose how many to make
+  window.setInterval(generateNets);
 }
 
 function draw() {
   background(220);
+  
+  //call all the functions
   degreeBar();
   makeAimer();
  
   showNets();
 }
 
+//Aiming Function
 function makeAimer(){
   let aimX = 0;
   let aimY = 0;
-  push(); // save state of the transormation matrix
-  translate(width/2, height/2); // moves the origin
+  push();
+  translate(width/2, height/2);
   rotate(mouseX);
   line(aimX, aimY, aimX + 70, aimY + 70);
-  // strokeWeight();
   pop();
 }
 
@@ -65,7 +67,7 @@ function degreeBar(){
   // add instruntional text
 }
 
-
+//Net functions
 function generateNets(){
   let someNet = {
     width: 50, 
@@ -80,7 +82,7 @@ function generateNets(){
   //getting the nets to move
   // netX = noise(time) * width;
   // netY = noise(time + deviance) * height;
-  // circle(netX, netY, 50); // change to net
+  // circle(netX, netY, 50);
   // time += 0.008;
 }
 
@@ -126,6 +128,9 @@ function showNets(){
   }
 }
 
+// Ball functions
 function makeBalls(){
   
 }
+
+// Counter Functionss

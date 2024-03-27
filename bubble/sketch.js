@@ -8,7 +8,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
 
-  for(let i = 0; i < 5; i++){
+  for(let i = 0; i < 5; i++){ // com
     spawnBubble();
   }
 
@@ -21,10 +21,10 @@ function draw() {
 
   // moveBubblesRandomly();
   moveBubblesWithNoise();
-  displayBubbles();
+  displayBubbles(); // com
 }
 
-function mousePressed(){
+function mousePressed(){ // dont need
   //did you click on a bubble?
   for(let i = theBubbles.length - 1; i >= 0; i--){
     if(clickedInBubble(mouseX, mouseY, theBubbles[i])){
@@ -34,7 +34,7 @@ function mousePressed(){
   }
 }
 
-function clickedInBubble(x, y, someBubble){
+function clickedInBubble(x, y, someBubble){ //dont need
   let distanceAway = dist(x, y, someBubble.x, someBubble.y);
   let radius = someBubble.size / 2;
   if (distanceAway < radius){
@@ -45,7 +45,7 @@ function clickedInBubble(x, y, someBubble){
   }
 }
 
-function moveBubblesWithNoise(){
+function moveBubblesWithNoise(){ // com
   for(let bubble of theBubbles){
     let x = noise(bubble.timeX) * width;
     let y = noise(bubble.timeY) * height;
@@ -58,7 +58,7 @@ function moveBubblesWithNoise(){
   }
 }
 
-function spawnBubble(){
+function spawnBubble(){ //com
   let someBubble = {
     size: random(30, 50),
     x: random(width),
@@ -75,14 +75,14 @@ function spawnBubble(){
   theBubbles.push(someBubble);
 }
 
-function displayBubbles(){
+function displayBubbles(){ // com
   for(let bubble of theBubbles){
     fill(bubble.r, bubble.g, bubble.b, bubble.alpha);
     circle(bubble.x, bubble.y, bubble.size);
   }
 }
 
-function moveBubblesRandomly(){
+function moveBubblesRandomly(){ // com
   for(let bubble of theBubbles){
     let choice = random(100);
     if(choice < 25){

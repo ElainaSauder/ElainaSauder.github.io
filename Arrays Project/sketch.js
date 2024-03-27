@@ -28,13 +28,20 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
   rectMode(CENTER);
+
+  for(let i = 0; i < 5; i++){
+    generateNets();
+  }
+
+  // choose how many to make
 }
 
 function draw() {
   background(220);
   degreeBar();
   makeAimer();
-  generateNets();
+ 
+  showNets();
 }
 
 function makeAimer(){
@@ -77,7 +84,7 @@ function generateNets(){
   // time += 0.008;
 }
 
-function moveNets(){
+function moveNets(){ 
   for(let net of theNets){
     let choice = random(100);
     if(choice < 25){
@@ -96,6 +103,19 @@ function moveNets(){
       // move left
       net.x -= net.speedl;
     }
+  }
+}
+
+function moveNetsWithNoise(){
+  for(let net of theNets){
+    let x = noise(net.timeX) * width;
+    let y = noise(net.timeY) * height;
+
+    net.timeX = x;
+    net.timeY = y;
+
+    net.timeX += net.deltaTime;
+    net.timeY += net.deltaTime;
   }
 }
 

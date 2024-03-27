@@ -19,31 +19,74 @@
 
 //Variables
 let theNets = [];
+let ballArray = [];
 let state = 0;
+let amountOfNets = 5;
+let counter = 0;
+let hit;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  spawnBall(width/2, height/2);
   
   //Setting up for translate
   angleMode(DEGREES);
   rectMode(CENTER);
 
   //make the nets
-  for(let i = 0; i < 5; i++){ //change the 5 to make it more or less nets
+  for(let i = 0; i < amountOfNets; i++){ //change the 5 to make it more or less nets
     generateNets();
   }
-
-  window.setInterval(generateNets);
 }
 
 function draw() {
   background(220);
   
-  //call all the functions
+  //call all the aim functions
   degreeBar();
   makeAimer();
  
+  // call all the net functions
+  moveNetsWithNoise();
   showNets();
+
+  // call all the ball functions
+  moveBalls();
+  displayBalls();
+}
+
+// Ball Functions
+function keyPressed(){
+  if(keyCode === 32){ // 32 = space bar
+    spawnBall(width/2, height/2);
+  }
+}
+
+function moveBalls(){
+  for(let ball of ballArray){
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+  }
+}
+
+function displayBalls() {
+  for(let ball of ballArray){
+    fill(ball.color);
+    circle(ball.x, ball.y, ball.radius * 2);
+  }
+}
+
+function spawnBall(){
+  let ball = {
+    x: width/2,
+    y: height/2,
+    radius: 20,
+    color: color("orange"),
+    dx: mouseX * -0.005, // change to position
+    dy: mouseY * -0.005, // change to posotion
+  };
+  ballArray.push(ball);
 }
 
 //Aiming Function
@@ -60,7 +103,7 @@ function makeAimer(){
 function degreeBar(){
   fill("green");
   rect(width/2, height - 20, 360, 10);
-  console.log (mouseX);
+  // console.log (mouseX);
   if(mouseX > 600|| mouseX < 965){
     circle(mouseX, height - 20, 20);
   }
@@ -79,11 +122,6 @@ function generateNets(){
     deltaTime: 0.005,
   };
   theNets.push(someNet);
-  //getting the nets to move
-  // netX = noise(time) * width;
-  // netY = noise(time + deviance) * height;
-  // circle(netX, netY, 50);
-  // time += 0.008;
 }
 
 function moveNets(){ 
@@ -103,7 +141,7 @@ function moveNets(){
     }
     else{
       // move left
-      net.x -= net.speedl;
+      net.x -= net.speed;
     }
   }
 }
@@ -113,24 +151,26 @@ function moveNetsWithNoise(){
     let x = noise(net.timeX) * width;
     let y = noise(net.timeY) * height;
 
-    net.timeX = x;
-    net.timeY = y;
+    net.x = x;
+    net.y = y;
 
     net.timeX += net.deltaTime;
     net.timeY += net.deltaTime;
+    // console.log(net);
   }
 }
 
 function showNets(){
   for(let net of theNets){
     fill("blue");
+    console.log(net.x, net.y, net.width, net.height);
     rect(net.x, net.y, net.width, net.height);
   }
 }
 
-// Ball functions
-function makeBalls(){
-  
+// Collide Functions
+function isHit(){
+  hit = collideRectCircle(theNets.x, theNets.y, theNets.width, theNets.height, ballArray.x, ballArray.y, ballArray.radius);
 }
 
-// Counter Functionss
+// Counter Functions

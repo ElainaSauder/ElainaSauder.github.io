@@ -99,7 +99,7 @@ function moveBubblesRandomly(){ // com
     }
     else{
       // move left
-      bubble.x -= bubble.speedl;
+      bubble.x -= bubble.speed;
     }
   }
 }

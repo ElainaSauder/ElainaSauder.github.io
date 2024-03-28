@@ -1,4 +1,4 @@
-// Arrays and Object Notation Project - Basketball shooter
+// Arrays and Object Notation Project - Noise Shooter
 // Elaina Sauder
 // April 8th, 2024
 //
@@ -24,6 +24,9 @@ let state = 0;
 let amountOfNets = 5;
 let counter = 0;
 let hit;
+
+let aimX;
+let aimY;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -54,6 +57,11 @@ function draw() {
   // call all the ball functions
   moveBalls();
   displayBalls();
+
+  //Other calls
+  isHit();
+  isWon(); // make this funtions
+
 }
 
 // Ball Functions
@@ -83,16 +91,16 @@ function spawnBall(){
     y: height/2,
     radius: 20,
     color: color("orange"),
-    dx: mouseX * -0.005, // change to position
-    dy: mouseY * -0.005, // change to posotion
+    dx: aimX + 10 * 0.05, // change to coniside with aimX
+    dy: aimY + 10 * 0.05,  // change to coniside with aimY
   };
   ballArray.push(ball);
 }
 
 //Aiming Function
 function makeAimer(){
-  let aimX = 0;
-  let aimY = 0;
+  aimX = 0;
+  aimY = 0;
   push();
   translate(width/2, height/2);
   rotate(mouseX);
@@ -163,14 +171,23 @@ function moveNetsWithNoise(){
 function showNets(){
   for(let net of theNets){
     fill("blue");
-    console.log(net.x, net.y, net.width, net.height);
+    // console.log(net.x, net.y, net.width, net.height);
     rect(net.x, net.y, net.width, net.height);
   }
 }
 
 // Collide Functions
 function isHit(){
-  hit = collideRectCircle(theNets.x, theNets.y, theNets.width, theNets.height, ballArray.x, ballArray.y, ballArray.radius);
+  hit = collideRectCircle(theNets.x, theNets.y, theNets.width, theNets.height, ballArray.x, ballArray.y, ballArray.radius); // make work
+  if(hit === true){
+    counter++;
+    console.log(hit);
+  }
 }
 
 // Counter Functions
+function isWon(){
+  //showing the counter
+
+  //letting you know you won
+}

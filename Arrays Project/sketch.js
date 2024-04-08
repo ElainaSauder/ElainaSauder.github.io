@@ -92,14 +92,35 @@ function displayBalls() {
   }
 }
 
+function upDown(){
+  if (goingUp === true){
+    y = (y - 10) * 0.05;
+    goingUp = false;
+  }
+  else if (goingDown === true){
+    y = (y + 10) * 0.05;
+    goingDown = false;
+  }
+}
+
+function leftRight(){
+  if(goingLeft === true){
+    x = (x - 10) * 0.05;
+    goingLeft = false;
+  }
+  else if(goingRight === true){
+    x = (x + 10) * 0.05;
+    goingRight = false;
+  }
+}
 function spawnBall(){
   let ball = {
     x: width/2,
     y: height/2,
     radius: 20,
     color: color("orange"),
-    dx: , // MAKE WORK
-    dy: aimY + 10 * 0.09,  
+    dx: leftRight(), // MAKE WORK
+    dy: upDown(),  
   };
   ballArray.push(ball);
 }

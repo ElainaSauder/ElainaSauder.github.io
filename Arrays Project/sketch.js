@@ -5,17 +5,6 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-// use noise to move the nets in a random way
-// use object notations to make the ball and the nets
-// use arrays
-// use an aiming line with a slider rather than using only mouse
-// make the targets disapear when you hit them
-// use collide
-// use a point counter
-// use state cariable to make a difficulty starter page
-// use a key on the keyboard to shoot the ball, the space bar
-// make instructions
-
 
 //Variables
 let theNets = [];
@@ -28,6 +17,11 @@ let hit;
 let aimX;
 let aimY;
 
+let goingUp;
+let goingDown;
+let goingLeft;
+let goingRight;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -38,7 +32,7 @@ function setup() {
   rectMode(CENTER);
 
   //make the nets
-  for(let i = 0; i < amountOfNets; i++){ //change the 5 to make it more or less nets
+  for(let i = 0; i < amountOfNets; i++){ 
     generateNets();
   }
 }
@@ -66,8 +60,21 @@ function draw() {
 
 // Ball Functions
 function keyPressed(){
-  if(keyCode === 32){ // 32 = space bar
+  if(keyCode === 38){ // 38 = up
     spawnBall(width/2, height/2);
+    goingUp = true;
+  }
+  else if(keyCode === 40){ // 40 = down
+    spawnBall(width/2, height/2);
+    goingDown = true;
+  }
+  else if(keyCode === 37){ // 37 = left
+    spawnBall(width/2, height/2);
+    goingLeft = true;
+  }
+  else if(keyCode === 39){ // 39 = right
+    spawnBall(width/2, height/2);
+    goingRight = true;
   }
 }
 
@@ -91,8 +98,8 @@ function spawnBall(){
     y: height/2,
     radius: 20,
     color: color("orange"),
-    dx: aimX + 10 * 0.05, // change to coniside with aimX
-    dy: aimY + 10 * 0.05,  // change to coniside with aimY
+    dx: , // MAKE WORK
+    dy: aimY + 10 * 0.09,  
   };
   ballArray.push(ball);
 }
@@ -111,7 +118,6 @@ function makeAimer(){
 function degreeBar(){
   fill("green");
   rect(width/2, height - 20, 360, 10);
-  // console.log (mouseX);
   if(mouseX > 600|| mouseX < 965){
     circle(mouseX, height - 20, 20);
   }
@@ -128,6 +134,7 @@ function generateNets(){
     timeX: random(1000000),
     timeY: random(1000000),
     deltaTime: 0.005,
+    isHit: false,
   };
   theNets.push(someNet);
 }
@@ -164,24 +171,36 @@ function moveNetsWithNoise(){
 
     net.timeX += net.deltaTime;
     net.timeY += net.deltaTime;
-    // console.log(net);
   }
 }
 
 function showNets(){
   for(let net of theNets){
     fill("blue");
-    // console.log(net.x, net.y, net.width, net.height);
     rect(net.x, net.y, net.width, net.height);
   }
 }
 
 // Collide Functions
 function isHit(){
-  hit = collideRectCircle(theNets.x, theNets.y, theNets.width, theNets.height, ballArray.x, ballArray.y, ballArray.radius); // make work
-  if(hit === true){
-    counter++;
-    console.log(hit);
+  for(let net of theNets){
+    for(let ball of ballArray){
+      hit = collideRectCircle(net.x, net.y, net.width, net.height, ball.x, ball.y, ball.radius); 
+      if(hit === true){
+        counter++;
+        net.isHit = true;
+        console.log(hit);
+      }
+    }
+  }
+}
+
+function makeNetGoAway(){ // MAKE WORK
+  for(let i = theNets.length - 1; i >= 0; i--){
+    if(theNets[i].isHit === true){
+      //Kill it
+      theNets.splice(i, 1);
+    }
   }
 }
 

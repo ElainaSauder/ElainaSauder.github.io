@@ -119,7 +119,7 @@ function spawnBall(){
     y: height/2,
     radius: 20,
     color: color("orange"),
-    dx: leftRight(), // MAKE WORK
+    dx: leftRight(), 
     dy: upDown(),  
   };
   ballArray.push(ball);

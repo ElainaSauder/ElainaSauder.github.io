@@ -39,10 +39,6 @@ function setup() {
 
 function draw() {
   background(220);
-  
-  //call all the aim functions
-  degreeBar();
-  makeAimer();
  
   // call all the net functions
   moveNetsWithNoise();
@@ -59,22 +55,30 @@ function draw() {
 }
 
 // Ball Functions
+function KeyPressed(){
+  if(keyCode === 32){ // 32 = space bar
+      spawnBall(width/2, height/2);
+  }
+}
+
 function keyPressed(){
-  if(keyCode === 38){ // 38 = up
-    spawnBall(width/2, height/2);
-    goingUp = true;
-  }
-  else if(keyCode === 40){ // 40 = down
-    spawnBall(width/2, height/2);
-    goingDown = true;
-  }
-  else if(keyCode === 37){ // 37 = left
-    spawnBall(width/2, height/2);
-    goingLeft = true;
-  }
-  else if(keyCode === 39){ // 39 = right
-    spawnBall(width/2, height/2);
-    goingRight = true;
+  for(let ball of ballArray){
+    if(keyCode === 38){ // 38 = up
+      spawnBall(width/2, height/2);
+      ball.y -= 10;
+    }
+    else if(keyCode === 40){ // 40 = down
+      spawnBall(width/2, height/2);
+      ball.y += 10;
+    }
+    else if(keyCode === 37){ // 37 = left
+      spawnBall(width/2, height/2);
+      ball.x -= 10;
+    }
+    else if(keyCode === 39){ // 39 = right
+      spawnBall(width/2, height/2);
+      ball.x += 10;
+    }
   }
 }
 
@@ -123,31 +127,12 @@ function spawnBall(){
     y: height/2,
     radius: 20,
     color: color("orange"),
-    dx: leftRight(), 
-    dy: upDown(),  
+    dx: leftRight, 
+    dy: upDown, 
   };
   ballArray.push(ball);
 }
 
-//Aiming Function
-function makeAimer(){
-  aimX = 0;
-  aimY = 0;
-  push();
-  translate(width/2, height/2);
-  rotate(mouseX);
-  line(aimX, aimY, aimX + 70, aimY + 70);
-  pop();
-}
-
-function degreeBar(){
-  fill("green");
-  rect(width/2, height - 20, 360, 10);
-  if(mouseX > 600|| mouseX < 965){
-    circle(mouseX, height - 20, 20);
-  }
-  // add instruntional text
-}
 
 //Net functions
 function generateNets(){

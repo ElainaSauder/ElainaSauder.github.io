@@ -1,4 +1,4 @@
-// Arrays and Object Notation Project - Noise Shooter
+// Arrays and Object Notation Project - Noise Chaser
 // Elaina Sauder
 // April 8th, 2024
 //
@@ -29,7 +29,7 @@ function setup() {
   
   //Setting up for translate
   angleMode(DEGREES);
-  rectMode(CENTER);
+  rectMode(CENTER); 
 
   //make the nets
   for(let i = 0; i < amountOfNets; i++){ 
@@ -45,7 +45,7 @@ function draw() {
   showNets();
 
   // call all the ball functions
-  moveBalls();
+  moveBalls(); 
   displayBalls();
 
   //Other calls
@@ -57,7 +57,7 @@ function draw() {
 // Ball Functions
 function KeyPressed(){
   if(keyCode === 32){ // 32 = space bar
-      spawnBall(width/2, height/2);
+    spawnBall(width/2, height/2);
   }
 }
 
@@ -106,7 +106,7 @@ function upDown(){
       ball.y = (ball.y + 10) * 0.05;
       // goingDown = false;
     }
-}
+  }
 }
 
 function leftRight(){

@@ -45,7 +45,7 @@ function draw() {
   showNets();
 
   // call all the ball functions
-  moveBalls();
+  keyPressed();
   displayBalls();
 
   //Other calls
@@ -57,7 +57,7 @@ function draw() {
 // Ball Functions
 function KeyPressed(){
   if(keyCode === 32){ // 32 = space bar
-      spawnBall(width/2, height/2);
+    spawnBall(width/2, height/2);
   }
 }
 
@@ -82,12 +82,6 @@ function keyPressed(){
   }
 }
 
-function moveBalls(){
-  for(let ball of ballArray){
-    ball.x += ball.dx;
-    ball.y += ball.dy;
-  }
-}
 
 function displayBalls() {
   for(let ball of ballArray){
@@ -96,43 +90,9 @@ function displayBalls() {
   }
 }
 
-function upDown(){
-  for(let ball of ballArray){
-    if (goingUp === true){
-      ball.y = (ball.y - 10) * 0.05;
-      // goingUp = false;
-    }
-    else if (goingDown === true){
-      ball.y = (ball.y + 10) * 0.05;
-      // goingDown = false;
-    }
-}
-}
-
-function leftRight(){
-  for(let ball of ballArray){
-    if(goingLeft === true){
-      ball.x = (ball.x - 10) * 0.05;
-      // goingLeft = false;
-    }
-    else if(goingRight === true){
-      ball.x = (ball.x + 10) * 0.05;
-      // goingRight = false;
-    }
-  }
-}
 function spawnBall(){
-  let ball = {
-    x: width/2,
-    y: height/2,
-    radius: 20,
-    color: color("orange"),
-    dx: leftRight, 
-    dy: upDown, 
-  };
-  ballArray.push(ball);
-}
 
+}
 
 //Net functions
 function generateNets(){
@@ -213,6 +173,8 @@ function makeNetGoAway(){ // MAKE WORK
     }
   }
 }
+
+
 
 // Counter Functions
 function isWon(){

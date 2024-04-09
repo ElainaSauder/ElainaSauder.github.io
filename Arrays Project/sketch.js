@@ -95,22 +95,22 @@ function displayBalls() {
 function upDown(){
   if (goingUp === true){
     y = (y - 10) * 0.05;
-    goingUp = false;
+    // goingUp = false;
   }
   else if (goingDown === true){
     y = (y + 10) * 0.05;
-    goingDown = false;
+    // goingDown = false;
   }
 }
 
 function leftRight(){
   if(goingLeft === true){
     x = (x - 10) * 0.05;
-    goingLeft = false;
+    // goingLeft = false;
   }
   else if(goingRight === true){
     x = (x + 10) * 0.05;
-    goingRight = false;
+    // goingRight = false;
   }
 }
 function spawnBall(){
